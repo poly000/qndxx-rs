@@ -1,0 +1,31 @@
+name: Github Pages
+
+# By default, runs if you push to master. keeps your deployed app in sync with master branch.
+on:
+  schedule: [{cron: "0 8 * * *"}]
+# to only run when you do a new github release, comment out above part and uncomment the below trigger.
+# on:
+#   release:
+#     types:
+#       - published
+
+permissions:
+  contents: write # for committing to gh-pages branch.
+
+jobs:
+  build-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare dependencies
+        run: apt install jq curl
+
+      - name: Generate
+        run: ./gen.sh
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          # this option will not maintain any history of your previous pages deployment
+          # set to false if you want all page build to be committed to your gh-pages branch history
+          single-commit: true
