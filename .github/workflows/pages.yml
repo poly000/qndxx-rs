@@ -3,6 +3,8 @@ name: Github Pages
 # By default, runs if you push to master. keeps your deployed app in sync with master branch.
 on:
   schedule: [{cron: "0 8 * * *"}]
+  workflow_dispatch:
+  push: {branches: ["master", "main"]}
 # to only run when you do a new github release, comment out above part and uncomment the below trigger.
 # on:
 #   release:
