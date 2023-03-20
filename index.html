@@ -21,7 +21,7 @@
 </head>
 
 <script>
-    function fillContent() {   //when page be loaded this function will be triggered
+    function fillContent() {   // when page be loaded this function will be triggered
         let request = new XMLHttpRequest();  //new a XMLHttpRequest Object
         request.onreadystatechange = function () {  //When state changed it will trigger this Function;  
             if (request.readyState === 4 && request.status === 200) { //When succeed the request the readystate become 4 and status code is 200;                                                                   
